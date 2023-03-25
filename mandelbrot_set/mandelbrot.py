@@ -4,7 +4,7 @@ from math import *
 from utils import *
 
         
-def get_fractal(step=0.01, zoom=10, max_iterations=10):
+def get_fractal(step=0.1, zoom=10, max_iterations=10):
     """ В этом блоке перебираем все координаты и строим последовательность """
     
     x, y, = -2, -2
@@ -45,6 +45,6 @@ while cycle:
             cycle = False
     
     sc.fill((5, 30, 10))
-    get_fractal(50)
+    get_fractal(0.1, 10, 5)
 
     pg.display.update()
