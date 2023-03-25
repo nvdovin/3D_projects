@@ -10,6 +10,9 @@ col_c, row_c = WIGHT / 2, HEIGHT / 2
 
 FPS = 60
 
+# Camera
+camera = np.array([0, 1.2, -1.5])
+
 # Colors
 black = (10, 10, 30)
 white = (255, 255, 255)
@@ -64,4 +67,7 @@ def get_2D_coirds(point):
 	
 	return np.dot(point, to_2D)
 	
-	
+
+def get_distance(point):
+	distance = sqrt((point[0] - camera[0]) ** 2 + (point[1] - camera[1]) ** 2 + (point[2] - camera[2]) ** 2)
+	return distance * 100
