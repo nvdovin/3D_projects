@@ -11,34 +11,41 @@ def get_Mandelbrods_set(max_iterations=10):
             c = complex(x, y)
             z = complex(0)
 
+            x_coord, y_coord = round((x * zoom) + x_center), round((y * zoom) + y_center)
+
             for iteration in range(max_iterations):
+                R=G=B=0
                 z = z ** 2 + c
 
                 if abs(z) > 2:
                     if iteration == 0:
-                        R = G = B = 0
+                        R = 10
+                        G = 7
+                        B = 12
+                        # statistics.write(f"x: {x}, y: {y} Вылетел на {iteration}, цвет: {R, G, B}. Z = {z}\n")
+                        
                     else:
-                        R = abs(round(max_iterations / iteration) - 100)
-                        G = abs(round( max_iterations / iteration) - 70)
-                        B = round(max_iterations / iteration)
-
-                    x_coord, y_coord = round((x * zoom) + x_center), round((y * zoom) + y_center)
-                    pg.draw.circle(sc, (R, G, B), (x_coord, y_coord), 1)
-                    print(f"x: {x}, y: {y} Вылетел на {iteration}, цвет: {R, G, B}. Z = {z}")
+                        R = round((iteration / max_iterations) * 100)
+                        G = round((iteration / max_iterations) * 100)
+                        B = round((iteration / max_iterations) * 255)
+                    # statistics.write(f"x: {x}, y: {y} Вылетел на {iteration}, цвет: {R, G, B}. Z = {z}\n")
                     break
+            pg.draw.circle(sc, (R, G, B), (x_coord, y_coord), 1)
+                
 
-                    
+# statistics = open("statistics.txt", "w", encoding="utf-8")
 
-x_coordinates = y_coordinates = np.linspace(-2, 2, 200)
+zoom, density = 300, 800
+x_coordinates = np.linspace(-2.1, 1.8, density)
+y_coordinates = np.linspace(-1.8, 1.8, density)
 
 pg.init()
 sc = pg.display.set_mode((WIGHT, HEIGHT))
 pg.display.set_caption("Mandelbrod`s set")
 
-zoom = 180
-sc.fill((5, 10, 7))
+sc.fill((10, 7, 12))
 
-get_Mandelbrods_set(255)
+get_Mandelbrods_set(25)
 
 pg.display.update()
 cycle = True
