@@ -3,7 +3,7 @@ import numpy as np
 
 
 # Configurations
-WIGHT  = 1700
+WIGHT  = 1080
 HEIGHT = int(WIGHT * (9 / 16))
 h = WIGHT / HEIGHT
 col_c, row_c = WIGHT / 2, HEIGHT / 2
