@@ -12,10 +12,10 @@ def get_Mandelbrots_array(max_iterations=10):
 
             for iteration in range(max_iterations):
                 z = z ** 2 + c
+                color = 0
 
                 if abs(z) > 2:
                     if iteration == 0:
-                        color = 0
                         break
                     else:
                         color = round(iteration / max_iterations * 255)
@@ -36,12 +36,16 @@ screen = pg.display.set_mode((WIGHT, HEIGHT))
 screen.fill((BLACK))
 pg.display.set_caption("Array method")
 
-x_coordinates = np.linspace(-2.6, 1.7, WIGHT)
-y_coordinates = np.linspace(-2, 2, HEIGHT)
+h = 0.79
+v = 0.15
+scale = 0.004
+
+x_coordinates = np.linspace(-2 * scale - h, 2 * scale - h, WIGHT)
+y_coordinates = np.linspace(-2 * scale - v, 2 * scale - v, HEIGHT)
 
 array_of_values = np.zeros((WIGHT, HEIGHT))
 
-cahnged_array = get_Mandelbrots_array(30)
+cahnged_array = get_Mandelbrots_array(90)
 pg.surfarray.blit_array(screen, cahnged_array)
 pg.display.update()
 
