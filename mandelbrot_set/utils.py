@@ -10,3 +10,4 @@ y_center = HEIGHT // 2
 # Colors
 
 BLACK = (10, 7, 12)
+WHITE = (255, 255, 255)
