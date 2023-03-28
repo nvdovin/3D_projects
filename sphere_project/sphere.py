@@ -63,7 +63,7 @@ pg.init()
 sc = pg.display.set_mode((WIGHT, HEIGHT))
 clock = pg.time.Clock()
 
-s = Sphere(2)
+s = Sphere(0.7)
 s.get_rings_coordinates()
 
 alpha = 0
